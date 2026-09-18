@@ -1,16 +1,19 @@
-# <!-- TODO: project title -->
+# A Visual Information Extraction System using Multimodal Large Language Models for Scanned Cognitive and Behavioral Assessments 
 
 ## 1. Introduction
 
-This repo presents a modular design for visual information extraction systems to process cognitive assessments (i.e., MMSE, MoCA, Mini-Cog) and the NICHQ Vanderbilt Assessment using multimodal LLMs. The systems begin with form-type classification, which assigns a scanned page to a form type (e.g., MMSE, MoCA, Mini-Cog, or other). The page is then assigned to the corresponding score extraction module for question, field, and score extraction (e.g., Mini-Cog word recall, clock drawing, and total scores). 
+This project presents a modular design for visual information extraction systems to process scanned cognitive assessments (i.e., MMSE, MoCA, Mini-Cog) and the NICHQ Vanderbilt Assessment using multimodal LLMs. The systems begin with form-type classification, which assigns a scanned page to a form type (e.g., MMSE, MoCA, Mini-Cog, or other). The page is then assigned to the corresponding score extraction module for question, field, and score extraction (e.g., Mini-Cog word recall, clock drawing, and total scores). 
+
+> To demo the system, we manually created 50 synthetic scanned pages (5 of each type) in this repo. 
+> Over 1000 real patient records are evaluated in our paper while not presented here. 
 
 
 Methodology flowchart. The Cognitive Assessment Score Extraction System and the NICHQ Vanderbilt Assessment Score Extraction System comprise two layers: form classifier and score extractors. The form classifier assigns a scanned page to a downstream score extractor for question, field, and score extraction. 
 <div align="center"><img src="readme_images/method_flowchart.png" width=800 ></div>
 
-Scanned cognitive assessments and NICHQ Vanderbilt Assessment. (A)The Mini-Mental State Examination (MMSE). (B) The Montreal Cognitive Assessment (MoCA). (C) The Mini-Cog instruction and scoring page. (D) The Mini-Cog clock-drawing page. (E) The NICHQ Vanderbilt Assessment Scale – Parent Information. (F) The NICHQ Vanderbilt Assessment Scale – Teacher Information. (G) The NICHQ Vanderbilt Assessment Follow-up – Parent Information. (H) The NICHQ Vanderbilt Assessment Follow-up – Teacher Information.
+Synthetic scanned [cognitive assessments](./cognitive_assessment/scans/) and [NICHQ Vanderbilt Assessment](./ADHD_assessment/scans/). (A)The Mini-Mental State Examination (MMSE). (B) The Montreal Cognitive Assessment (MoCA). (C) The Mini-Cog instruction and scoring page. (D) The Mini-Cog clock-drawing page. (E) The NICHQ Vanderbilt Assessment Scale – Parent Information. (F) The NICHQ Vanderbilt Assessment Scale – Teacher Information. (G) The NICHQ Vanderbilt Assessment Follow-up – Parent Information. (H) The NICHQ Vanderbilt Assessment Follow-up – Teacher Information.
 
-> **Note on the data.** All scans in this repository are **synthetic**. 
+> **Note on the data.** All 50 scans in this repository are **synthetic**. 
 > There is no protected health information (PHI) in this repo. The synthetic forms
 > follow the same layouts and the same annotation schema, so the pipeline,
 > prompts, configs and scoring code run here exactly as they do on the real
