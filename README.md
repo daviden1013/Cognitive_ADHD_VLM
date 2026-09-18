@@ -46,7 +46,7 @@ pip install openai
 
 Tested with Python 3.12, `vlm4ocr` 0.6.0, `openai` 2.36, `pillow` 12.2.
 
-### Model access
+### LLM access
 
 The configs target **Azure OpenAI**. You need a deployment for each model you
 intend to run, and the deployment name must match the `vlm_engine.model` field in
@@ -117,7 +117,38 @@ cd cognitive_assessment       # or: cd ADHD_assessment
 
 The two assessments are independent — run either or both, in any order.
 
-### 4.1 The experimental arms
+### 4.1 Prompt templates
+
+Every prompt the pipeline uses is in this repo, verbatim — one classifier prompt
+per assessment plus one score-extraction prompt per form type. Each config wires
+the classifier's output label to the matching extractor (see the `routes:` block
+in any config file).
+
+**Cognitive assessment** — [`cognitive_assessment/prompt_templates/`](./cognitive_assessment/prompt_templates/)
+
+| Prompt | Role | Predicted class it serves |
+| --- | --- | --- |
+| [`form_classification_v0.md`](./cognitive_assessment/prompt_templates/form_classification_v0.md) | Classifier | emits `MMSE`, `MoCA`, `Mini-Cog:Instruction`, `Mini-Cog:Clock_Drawing`, or `other` |
+| [`mmse_score_extraction_v1.md`](./cognitive_assessment/prompt_templates/mmse_score_extraction_v1.md) | Score extractor | `MMSE` |
+| [`moca_score_extraction_v1.md`](./cognitive_assessment/prompt_templates/moca_score_extraction_v1.md) | Score extractor | `MoCA` |
+| [`mini_cog_instruction_score_extraction_v1.md`](./cognitive_assessment/prompt_templates/mini_cog_instruction_score_extraction_v1.md) | Score extractor | `Mini-Cog:Instruction` |
+| [`mini_cog_clock_drawing_score_extraction_v1.md`](./cognitive_assessment/prompt_templates/mini_cog_clock_drawing_score_extraction_v1.md) | Score extractor | `Mini-Cog:Clock_Drawing` |
+
+**NICHQ Vanderbilt assessment** — [`ADHD_assessment/prompt_templates/`](./ADHD_assessment/prompt_templates/)
+
+| Prompt | Role | Predicted class it serves |
+| --- | --- | --- |
+| [`form_classification_v0.md`](./ADHD_assessment/prompt_templates/form_classification_v0.md) | Classifier | emits `Vanderbilt:Scale_Parent`, `Vanderbilt:Scale_Teacher`, `Vanderbilt:Followup_Parent`, `Vanderbilt:Followup_Teacher`, or `other` |
+| [`vanderbilt_scale_parent_score_extraction_v1.md`](./ADHD_assessment/prompt_templates/vanderbilt_scale_parent_score_extraction_v1.md) | Score extractor | `Vanderbilt:Scale_Parent` |
+| [`vanderbilt_scale_teacher_score_extraction_v1.md`](./ADHD_assessment/prompt_templates/vanderbilt_scale_teacher_score_extraction_v1.md) | Score extractor | `Vanderbilt:Scale_Teacher` |
+| [`vanderbilt_followup_parent_score_extraction_v1.md`](./ADHD_assessment/prompt_templates/vanderbilt_followup_parent_score_extraction_v1.md) | Score extractor | `Vanderbilt:Followup_Parent` |
+| [`vanderbilt_followup_teacher_score_extraction_v1.md`](./ADHD_assessment/prompt_templates/vanderbilt_followup_teacher_score_extraction_v1.md) | Score extractor | `Vanderbilt:Followup_Teacher` |
+
+A page classified `other` is recorded with its class only — no extractor runs for
+it. The classifier prompt has a single version (`v0`); the extractor prompts are
+at `v1`, which is what every config in section 4.2 uses.
+
+### 4.2 The experimental arms
 
 Four configs per assessment, a 2 × 2 over model and shot count. All are
 **end-to-end**: the classifier predicts the form type and the page is routed to
@@ -137,7 +168,7 @@ One-shot examples come from `scans/dev/` — held out of the test set — and th
 expected answers are read from `ground_truth/`, so no test page is ever shown to
 the model as an example.
 
-### 4.2 Run the pipeline
+### 4.3 Run the pipeline
 
 ```bash
 python pipelines/routed_pipeline.py -c configs/gpt-5.4-mini_zeroshot_e2e_v1.yaml
@@ -156,7 +187,7 @@ interrupted run continues where it stopped. After editing a prompt or an engine
 setting, pass `--overwrite` to force every page to be reprocessed — otherwise the
 stale outputs are kept and the arm becomes a silent mix of old and new.
 
-### 4.3 Evaluate
+### 4.4 Evaluate
 
 ```bash
 for run in gpt-5.4-mini_zeroshot_e2e_v1 \
@@ -183,8 +214,9 @@ the class: a page whose predicted class is wrong scores 0 on its fields. (The
 `extractor` mode exists for runs where the form type is given rather than
 predicted; it does not apply to these configs.)
 
-### 4.4 Reading the report
+### 4.5 Reading the report
 
+Evaluation of the synthetic data is available [Cognitive evaluation](./cognitive_assessment/evaluation/) and [Vandebilt evaluation](./ADHD_assessment/evaluation/)
 Each report gives, per form type and overall:
 
 - **class accuracy** — did the classifier identify the form correctly
