@@ -1,0 +1,15 @@
+{
+  "filename": "syn_minicog_clock_02.png",
+  "form": "Mini-Cog:Clock_Drawing",
+  "gold_class": "Mini-Cog:Clock_Drawing",
+  "pred_class": "Mini-Cog:Clock_Drawing",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "long_arm",
+      "gold": "1",
+      "pred": "2"
+    }
+  ]
+}

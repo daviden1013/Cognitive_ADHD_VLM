@@ -1,0 +1,82 @@
+---
+# One-shot end-to-end (e2e) routed run for the ADHD (NICHQ Vanderbilt) assessment PUBLIC DEMO:
+# classifier + all four score extractors in one pass, each extractor with a single
+# in-context example.
+#
+# Non-reasoning arm: same test set, same prompts, same routing and output
+# record as the gpt-5.4-mini run, but a greedy BasicVLMConfig -- so the two
+# compare directly.
+#
+# v1 = the v1 extractor prompts (the latest); the classifier prompt has only a v0.
+#
+# Run from the project dir:  python pipelines/routed_pipeline.py -c configs/gpt-4.1-mini_oneshot_e2e_v1.yaml
+# All relative paths below (prompts, examples, I/O) resolve against the project dir: ADHD_assessment/
+
+run_name: "gpt-4.1-mini_oneshot_e2e_v1"
+
+# --- VLM engine ---------------------------------------------------------------
+# Only Azure OpenAI is supported. Endpoint + API key are read from the environment
+# by the openai client -- do NOT put secrets here:
+#   AZURE_OPENAI_ENDPOINT   e.g. https://<resource>.openai.azure.com/
+#   AZURE_OPENAI_API_KEY    your key
+provider: "azure"
+vlm_engine:
+  model: "gpt-4.1-mini"                 # Azure *deployment* name
+  api_version: "2024-12-01-preview"
+  config: 'BasicVLMConfig(max_new_tokens=16384, temperature=0.0)'
+  # Optional engine-level throttling:
+  # max_concurrent_requests: 8
+  max_requests_per_minute: 64
+
+# --- One-shot examples --------------------------------------------------------
+# Each route's `few_shot_image` names a dev image (held out of scans/test/) of the form type
+# that route handles. Its expected answer is DERIVED from the matching ground-truth file,
+# <ground_truth_directory>/<stem>.json -> that record's `scores` payload, pretty-printed. A
+# named image whose ground truth is missing/invalid is a hard error, so build the ground
+# truth (scripts/build_ground_truth.py) before running a one-shot arm.
+#
+# The demo's scans/dev/ holds exactly one page per form type, so these are simply that page.
+# Keep them identical across the one-shot configs, or the arms stop being comparable.
+ground_truth_directory: "./ground_truth"
+
+# --- Step 1: page classifier --------------------------------------------------
+# Zero-shot on purpose: this arm isolates "does an example help the EXTRACTORS?".
+# Returns {"form": "<Vanderbilt:Scale_Parent | Vanderbilt:Scale_Teacher |
+#            Vanderbilt:Followup_Parent | Vanderbilt:Followup_Teacher | other>"}.
+classifier:
+  user_prompt_path: "./prompt_templates/form_classification_v0.md"
+
+# --- Step 2: per-form score extractors ----------------------------------------
+# Keys MUST match the classifier's "form" values (quoted -- they contain a colon). Pages
+# whose form is "other" (or any label not listed here) are recorded with the
+# classification only; no extraction. Both printed pages of a form route to the same
+# extractor: the prompts emit the whole form and mark whatever is not on the page
+# "Not Available".
+routes:
+  "Vanderbilt:Scale_Parent":
+    user_prompt_path: "./prompt_templates/vanderbilt_scale_parent_score_extraction_v1.md"
+    few_shot_image: "./scans/dev/Vanderbilt_scale_parent/syn_vanderbilt_parent_02.JPG"
+  "Vanderbilt:Scale_Teacher":
+    user_prompt_path: "./prompt_templates/vanderbilt_scale_teacher_score_extraction_v1.md"
+    few_shot_image: "./scans/dev/Vanderbilt_scale_teacher/syn_vanderbilt_teacher_04.JPG"
+  "Vanderbilt:Followup_Parent":
+    user_prompt_path: "./prompt_templates/vanderbilt_followup_parent_score_extraction_v1.md"
+    few_shot_image: "./scans/dev/Vanderbilt_followup_parent/syn_vanderbilt_followup_parent_05.JPG"
+  "Vanderbilt:Followup_Teacher":
+    user_prompt_path: "./prompt_templates/vanderbilt_followup_teacher_score_extraction_v1.md"
+    few_shot_image: "./scans/dev/Vanderbilt_followup_teacher/syn_vanderbilt_followup_teacher_04.JPG"
+
+# --- Pipeline / concurrency ---------------------------------------------------
+pipeline:
+  concurrent_batch_size: 8      # global cap on in-flight VLM calls (classify + extract)
+  max_file_load: 16             # max documents rasterized/open at once
+  rotate_correction: false      # false | "tesseract"
+  max_dimension_pixels: null    # e.g. 2048 to downscale before OCR
+
+# --- I/O (relative to the project dir: ADHD_assessment/) -----
+# Outputs land in <output_directory>/<run_name>/<TYPE>/ and
+# <messages_log_directory>/<run_name>/<TYPE>/, where <TYPE> mirrors the scans/test/ subfolder.
+# The demo ships 4 test pages per form type (16 in all); scans/dev/ is held out.
+input_directory: "./scans/test/"
+output_directory: "./ocr/"
+messages_log_directory: "./messages_logs"

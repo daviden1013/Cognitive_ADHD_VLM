@@ -1,0 +1,116 @@
+<!-- Mini-Cog: Clock Drawing page  (Stage-2 extraction)
+     Collects: (1) long/short arm pointed numbers  (2) time shown by hands
+               (3) written time (XX:XX)  (4) itemized scores
+                   (Word Recall / Clock Draw / Total Score)
+
+     DEPRECATED: "written_score" is kept for backward compatibility with
+     already-collected annotations only. Any handwritten score on the page is
+     one of the 3 itemized scores above and should be recorded there instead.
+     Do not fill it in on new annotations. -->
+<View>
+  <View style="display:flex;">
+
+    <!-- Left panel (stays in view): scanned page with zoom/pan/rotate -->
+    <View style="flex:60%; align-self:flex-start; position:sticky; top:0; padding-right:1em;">
+      <Image name="image" value="$image" zoom="true" zoomControl="true"
+             rotateControl="true" width="100%"/>
+    </View>
+
+    <!-- Right panel (scrolls independently): extraction fields -->
+    <View style="flex:40%; overflow-y:auto; max-height:90vh;">
+      <Header value="Mini-Cog — Clock Drawing page"/>
+      <Text name="filename" value="File: $filename"/>
+      <Text name="doc_id" value="Doc ID: $doc_id"/>
+
+      <Header value="Clock hands" size="4"/>
+
+      <Header value="Long (minute) hand points to:" size="5"/>
+      <Choices name="long_arm" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="4"/>
+        <Choice value="5"/>
+        <Choice value="6"/>
+        <Choice value="7"/>
+        <Choice value="8"/>
+        <Choice value="9"/>
+        <Choice value="10"/>
+        <Choice value="11"/>
+        <Choice value="12"/>
+        <Choice value="between/unclear"/>
+        <Choice value="no hand drawn"/>
+      </Choices>
+
+      <Header value="Short (hour) hand points to:" size="5"/>
+      <Choices name="short_arm" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="4"/>
+        <Choice value="5"/>
+        <Choice value="6"/>
+        <Choice value="7"/>
+        <Choice value="8"/>
+        <Choice value="9"/>
+        <Choice value="10"/>
+        <Choice value="11"/>
+        <Choice value="12"/>
+        <Choice value="between/unclear"/>
+        <Choice value="no hand drawn"/>
+      </Choices>
+
+      <Header value="Time" size="4"/>
+      <Header value="Time shown by the clock hands (HH:MM)" size="5"/>
+      <TextArea name="clock_time" toName="image" rows="1" maxSubmissions="1"
+                required="true" placeholder="e.g. 11:10  (type NA if not determinable)"/>
+
+      <Header value="Written time (if written text, as XX:XX)" size="5"/>
+      <TextArea name="written_time" toName="image" rows="1" maxSubmissions="1"
+                placeholder="e.g. 11:10  —  leave empty if none"/>
+
+      <Header value="Itemized scores" size="4"/>
+
+      <Header value="Word Recall  (0–3 points)" size="5"/>
+      <Choices name="word_recall" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Clock Draw  (0 or 2 points)" size="5"/>
+      <Choices name="clock_draw" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="2"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Total Score  (0–5 points)" size="5"/>
+      <Choices name="total_score" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="4"/>
+        <Choice value="5"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="⚠ DEPRECATED — Written score (do not use)" size="4"/>
+      <Text name="ws_hint"
+            value="DEPRECATED: do NOT fill this in. Any handwritten score on the page is one of the 3 itemized scores above — record it there instead. This field is kept only so previously collected annotations remain readable."/>
+      <TextArea name="written_score" toName="image" rows="1" maxSubmissions="1"
+                placeholder="DEPRECATED — leave empty"/>
+    </View>
+  </View>
+</View>

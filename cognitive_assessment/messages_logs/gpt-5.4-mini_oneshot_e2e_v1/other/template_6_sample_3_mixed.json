@@ -1,0 +1,30 @@
+[
+    [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant that can convert scanned documents into JSON format. Your output is accurate and well-formatted, starting with ```json and ending with ```. You will only output the JSON text without any additional explanations or comments. The JSON should include all text, tables, and lists with appropriate keys and values. You will ignore images, icons, or anything that cannot be converted into text."
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "[image]",
+                        "detail": "high"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "You are a precise medical-form classifier. You are given an image of **a single page** from a\nscanned document. Your job is to decide which cognitive assessment form that page belongs to and return\nthe answer as structured JSON.\n\n### Possible classes\n\nOutput exactly one of the following string values for `\"form\"`:\n\n- `\"MoCA\"`\n- `\"MMSE\"`\n- `\"Mini-Cog:Instruction\"`\n- `\"Mini-Cog:Clock_Drawing\"`\n- `\"other\"`\n\nIf the page does not clearly match any named form, output `\"other\"`.\n\n### How to recognize each form\n\n**\"MoCA\"** \u2014 Montreal Cognitive Assessment. Title \"MONTREAL COGNITIVE ASSESSMENT (MoCA)\",\nusually \"Version 8.3 English\". Distinctive **blue section bars**: VISUOSPATIAL / EXECUTIVE,\nNAMING, MEMORY, ATTENTION, LANGUAGE, ABSTRACTION, DELAYED RECALL, ORIENTATION. Contains a\ntrail-making sequence (numbers and letters in circles), a 3-D cube to copy, a clock-drawing box,\nthree animal line drawings, a right-hand **POINTS** column, \"TOTAL __/30\", and \"www.mocatest.org\".\n\n**\"MMSE\"** \u2014 Mini-Mental State Exam (any version; wording and layout vary). Recognize it by the\ntitle \"Mini-Mental State Exam(ination)\" and headings **Orientation, Registration, Attention and\nCalculation, Recall, Language**, typically with a \"Maximum\" and a \"Score\" column, a maximum total\nof 30, and a **two intersecting pentagons** design to copy (not a clock). An instructional /\n\"Try This: Best Practices in Nursing\" article page titled \"The Mini Mental State Examination\n(MMSE)\" also counts as `\"MMSE\"`.\n\n**\"Mini-Cog\"** \u2014 Recognize it by the red rounded banner reading **\"Mini-Cog\u2122\"** or\n**\"Clock Drawing\"**. Content: a **Three Word Registration** step with numbered word lists\n(Version 1\u20136, e.g. Banana/Sunrise/Chair), a **Clock Drawing** step (\"set the hands to 10 past 11\"\nusing a large pre-printed empty circle), a **Three Word Recall** step, and a Scoring table with\n\"Word Recall (0\u20133)\", \"Clock Draw (0 or 2)\", and \"Total Score (0\u20135)\". Credit line mentions\nS. Borson / soob@uw.edu. Note that the instruction page with **\"Mini-Cog\u2122\"** and the clock-drawing page with\n**\"Clock Drawing\"** should be classified as `\"Mini-Cog:Instruction\"` and `\"Mini-Cog:Clock_Drawing\"`, respectively.\n\n### Disambiguation notes\n\n- **Clock drawing appears on both MoCA and Mini-Cog, but the layout is very different.**\n  - In **Mini-Cog**, clock drawing gets its **own dedicated page**: a large pre-printed empty\n    circle that fills most of the page, under the red **\"Clock Drawing\"** banner. A page that is\n    essentially one big clock circle (with Mini-Cog branding) is `\"Mini-Cog:Clock_Drawing\"`.\n  - In **MoCA**, the clock is **not** its own page \u2014 it is a small box inside the\n    **VISUOSPATIAL / EXECUTIVE** section, occupying only a small portion of a page that also\n    holds the trail-making circles, the cube, and the other blue-barred sections (NAMING,\n    MEMORY, ATTENTION, \u2026). If the clock is just one small element among many sections titled\n    MoCA, classify the page as `\"MoCA\"`.\n- **MMSE has no clock** \u2014 its drawing task is intersecting pentagons. Do not confuse it with the\n  clock forms.\n- Classify by the form's **identity**, not by whether it is blank or filled in, and not by the\n  specific version number. Header/title text and the distinctive layout are the strongest signals.\n- If signals conflict or nothing matches confidently, output `\"other\"`.\n\n### Output format\n\nReturn **only** a JSON object \u2014 no prose, no markdown fences, no commentary \u2014 with exactly one key:\n\n```json\n{\"form\": \"<MoCA | MMSE | Mini-Cog:Instruction | Mini-Cog:Clock_Drawing | other>\"}\n```\n\n`\"form\"` must be exactly one of the five string values listed under **Possible classes** above.\n"
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": "{\"form\":\"other\"}",
+            "reasoning": "",
+            "tool_calls": []
+        }
+    ]
+]

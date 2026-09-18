@@ -1,0 +1,207 @@
+<!-- NICHQ Vanderbilt Assessment Follow-up—PARENT Informant  (Stage-2 extraction)
+     A task is a single page image. Turn on the page(s) actually shown on
+     the scan (both, if the scan spans a page break); only those questions
+     appear. Questions on pages left off are recorded as "Not Available"
+     in post-processing. Symptoms 0-3; Performance 1-5; plus Blank. -->
+<View>
+  <View style="display:flex;">
+
+    <!-- Left panel (stays in view): scanned page with zoom/pan/rotate -->
+    <View style="flex:55%; align-self:flex-start; position:sticky; top:0; padding-right:1em;">
+      <Image name="image" value="$image" zoom="true" zoomControl="true"
+             rotateControl="true" width="100%"/>
+    </View>
+
+    <!-- Right panel (scrolls independently): extraction fields -->
+    <View style="flex:45%; overflow-y:auto; max-height:90vh; font-size:12px;">
+      <!-- Compact styling: shrink radio controls so the long forms fit -->
+      <Style>
+        .ant-radio-button-wrapper { height:22px !important; line-height:20px !important; padding:0 8px !important; font-size:12px !important; }
+        .ant-radio-wrapper { font-size:12px !important; margin-right:8px !important; }
+        .lsf-choices { gap:2px !important; }
+      </Style>
+      <Header value="NICHQ Vanderbilt Assessment Follow-up—PARENT Informant" style="font-size:15px; margin:0 0 4px 0;"/>
+      <Text name="filename" value="File: $filename"/>
+      <Text name="doc_id" value="Doc ID: $doc_id"/>
+
+      <Header value="Which page(s) are on this scan?" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <Text name="page_hint" value="Turn on every page visible on the scan (both if it spans a page break). Page 1 = symptoms 1–18 + performance   ·   Page 2 = side effects" style="color:#6b7280; font-size:11px;"/>
+      <Choices name="visible_pages" toName="image" choice="multiple" required="true" showInline="true">
+        <Choice value="Page 1"/><Choice value="Page 2"/>
+      </Choices>
+
+      <!-- Page 1: symptoms 1–18 + performance -->
+      <View visibleWhen="choice-selected" whenTagName="visible_pages" whenChoiceValue="Page 1" style="border-left:3px solid #e3e6ec; padding-left:8px; margin-top:6px;">
+      <Header value="Page 1" size="5" style="font-size:11px; color:#6b7280; margin:0 0 4px 0; text-transform:uppercase; letter-spacing:0.5px;"/>
+      <Header value="Medication status" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <Header value="Is this evaluation based on a time when the child was on medication?" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="medication_status" toName="image" choice="single" showInline="true">
+        <Choice value="was on medication"/><Choice value="was not on medication"/><Choice value="not sure"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="Symptoms  (0=Never, 1=Occasionally, 2=Often, 3=Very Often)" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <Header value="1. Does not pay attention to details or makes careless mistakes with, for example, homework" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_1" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="2. Has difficulty keeping attention to what needs to be done" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_2" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="3. Does not seem to listen when spoken to directly" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_3" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="4. Does not follow through when given directions and fails to finish activities (not due to refusal or failure to understand)" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_4" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="5. Has difficulty organizing tasks and activities" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_5" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="6. Avoids, dislikes, or does not want to start tasks that require ongoing mental effort" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_6" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="7. Loses things necessary for tasks or activities (toys, assignments, pencils, or books)" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_7" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="8. Is easily distracted by noises or other stimuli" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_8" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="9. Is forgetful in daily activities" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_9" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="10. Fidgets with hands or feet or squirms in seat" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_10" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="11. Leaves seat when remaining seated is expected" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_11" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="12. Runs about or climbs too much when remaining seated is expected" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_12" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="13. Has difficulty playing or beginning quiet play activities" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_13" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="14. Is “on the go” or often acts as if “driven by a motor”" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_14" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="15. Talks too much" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_15" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="16. Blurts out answers before questions have been completed" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_16" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="17. Has difficulty waiting his or her turn" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_17" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="18. Interrupts or intrudes in on others’ conversations and/or activities" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="symptom_18" toName="image" choice="single" showInline="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="Performance  (1=Excellent, 2=Above Average, 3=Average, 4=Somewhat of a Problem, 5=Problematic)" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <Header value="19. Overall school performance" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_19" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="20. Reading" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_20" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="21. Writing" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_21" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="22. Mathematics" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_22" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="23. Relationship with parents" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_23" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="24. Relationship with siblings" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_24" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="25. Relationship with peers" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_25" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="26. Participation in organized activities (eg, teams)" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="performance_26" toName="image" choice="single" showInline="true">
+        <Choice value="1"/><Choice value="2"/><Choice value="3"/><Choice value="4"/><Choice value="5"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      </View>
+
+      <!-- Page 2: side effects -->
+      <View visibleWhen="choice-selected" whenTagName="visible_pages" whenChoiceValue="Page 2" style="border-left:3px solid #e3e6ec; padding-left:8px; margin-top:6px;">
+      <Header value="Page 2" size="5" style="font-size:11px; color:#6b7280; margin:0 0 4px 0; text-transform:uppercase; letter-spacing:0.5px;"/>
+      <Header value="Side Effects  (None / Mild / Moderate / Severe)" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <Header value="1. Headache" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_1" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="2. Stomachache" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_2" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="3. Change of appetite" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_3" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="4. Trouble sleeping" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_4" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="5. Irritability in the late morning, late afternoon, or evening" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_5" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="6. Socially withdrawn—decreased interaction with others" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_6" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="7. Extreme sadness or unusual crying" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_7" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="8. Dull, tired, listless behavior" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_8" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="9. Tremors/feeling shaky" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_9" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="10. Repetitive movements, tics, jerking, twitching, eye blinking" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_10" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="11. Picking at skin or fingers, nail biting, lip or cheek chewing" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_11" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      <Header value="12. Sees or hears things that aren’t there" size="5" style="font-size:12px; font-weight:600; margin:6px 0 0 0;"/>
+      <Choices name="side_effect_12" toName="image" choice="single" showInline="true">
+        <Choice value="None"/><Choice value="Mild"/><Choice value="Moderate"/><Choice value="Severe"/><Choice value="Blank"/><Choice value="Not Available"/>
+      </Choices>
+      </View>
+
+      <Header value="Comments" size="4" style="font-size:14px; margin:12px 0 2px 0;"/>
+      <TextArea name="comments" toName="image" rows="3" maxSubmissions="1" placeholder="transcribe any comments written on the form (leave empty if none)"/>
+    </View>
+  </View>
+</View>

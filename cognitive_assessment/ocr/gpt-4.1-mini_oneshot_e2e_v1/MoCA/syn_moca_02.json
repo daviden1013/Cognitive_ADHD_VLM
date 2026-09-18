@@ -1,0 +1,53 @@
+{
+  "class": "MoCA",
+  "scores": [
+    {
+      "question": "VISUOSPATIAL / EXECUTIVE",
+      "points": "2"
+    },
+    {
+      "question": "NAMING",
+      "points": "3"
+    },
+    {
+      "question": "MEMORY",
+      "points": null
+    },
+    {
+      "question": "ATTENTION - DIGIT SPAN",
+      "points": "2"
+    },
+    {
+      "question": "ATTENTION - LETTER TAPPING",
+      "points": "1"
+    },
+    {
+      "question": "ATTENTION - SERIAL 7",
+      "points": "3"
+    },
+    {
+      "question": "LANGUAGE - SENTENCE REPETITION",
+      "points": "1"
+    },
+    {
+      "question": "LANGUAGE - FLUENCY",
+      "points": "1"
+    },
+    {
+      "question": "ABSTRACTION",
+      "points": "0"
+    },
+    {
+      "question": "DELAYED RECALL",
+      "points": "3"
+    },
+    {
+      "question": "ORIENTATION",
+      "points": "6"
+    },
+    {
+      "question": "TOTAL",
+      "points": "20"
+    }
+  ]
+}

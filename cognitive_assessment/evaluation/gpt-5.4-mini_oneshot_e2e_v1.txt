@@ -1,0 +1,51 @@
+Run:   gpt-5.4-mini_oneshot_e2e_v1
+Mode:  e2e
+Gold:  ./ground_truth
+Model: ./ocr/gpt-5.4-mini_oneshot_e2e_v1
+Scored 16 document(s).
+Model outputs with no gold match (ignored): 4.
+
+MMSE                     n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.875 (95% CI [0.798, 0.952])   std 0.048   median 0.875   Q1 0.833   Q3 0.917   (over 4 docs)
+  perfect docs (acc=1.0):   0.000 (0/4)
+
+MoCA                     n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.833 (95% CI [0.646, 1.021])   std 0.118   median 0.875   Q1 0.792   Q3 0.917   (over 4 docs)
+  perfect docs (acc=1.0):   0.000 (0/4)
+
+Mini-Cog:Instruction     n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.917 (95% CI [0.651, 1.182])   std 0.167   median 1.000   Q1 0.917   Q3 1.000   (over 4 docs)
+  perfect docs (acc=1.0):   0.750 (3/4)
+
+Mini-Cog:Clock_Drawing   n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.750 (95% CI [0.532, 0.968])   std 0.137   median 0.786   Q1 0.679   Q3 0.857   (over 4 docs)
+  perfect docs (acc=1.0):   0.000 (0/4)
+
+============================================================
+OVERALL                  n=16
+  class accuracy:           1.000 (16/16)   95% CI [0.806, 1.000]
+  per-doc field accuracy:   mean 0.844 (95% CI [0.775, 0.912])   std 0.129   median 0.857   Q1 0.804   Q3 0.917   (over 16 docs)
+  perfect docs (acc=1.0):   0.188 (3/16)
+
+============================================================
+Classification report (per class):
+  class                    precision   recall      F1  support
+  MMSE                         1.000    1.000   1.000        4
+  MoCA                         1.000    1.000   1.000        4
+  Mini-Cog:Instruction         1.000    1.000   1.000        4
+  Mini-Cog:Clock_Drawing       1.000    1.000   1.000        4
+  macro avg                    1.000    1.000   1.000       16
+  accuracy                                      1.000       16
+
+Confusion matrix (rows = gold, cols = predicted):
+                              MMSE      MoCA   MC-Inst  MC-Clock
+MMSE                             4         0         0         0
+MoCA                             0         4         0         0
+Mini-Cog:Instruction             0         0         4         0
+Mini-Cog:Clock_Drawing           0         0         0         4
+  cols: MC-Inst=Mini-Cog:Instruction, MC-Clock=Mini-Cog:Clock_Drawing
+

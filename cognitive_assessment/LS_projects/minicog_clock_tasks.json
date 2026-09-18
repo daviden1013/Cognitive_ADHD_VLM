@@ -1,0 +1,62 @@
+[
+  {
+    "data": {
+      "image": "/data/local-files/?d=cognitive_assessment/scans/test/Mini-Cog_clock/syn_minicog_clock_04.JPG",
+      "filename": "syn_minicog_clock_04.JPG",
+      "doc_id": "syn_minicog_clock_04",
+      "page": 1,
+      "form": "minicog_clock",
+      "form_class": "Mini-Cog:Clock_Drawing",
+      "dataset": "test",
+      "shuffle_key": 0
+    }
+  },
+  {
+    "data": {
+      "image": "/data/local-files/?d=cognitive_assessment/scans/test/Mini-Cog_clock/syn_minicog_clock_01.JPG",
+      "filename": "syn_minicog_clock_01.JPG",
+      "doc_id": "syn_minicog_clock_01",
+      "page": 1,
+      "form": "minicog_clock",
+      "form_class": "Mini-Cog:Clock_Drawing",
+      "dataset": "test",
+      "shuffle_key": 1
+    }
+  },
+  {
+    "data": {
+      "image": "/data/local-files/?d=cognitive_assessment/scans/test/Mini-Cog_clock/syn_minicog_clock_02.JPG",
+      "filename": "syn_minicog_clock_02.JPG",
+      "doc_id": "syn_minicog_clock_02",
+      "page": 1,
+      "form": "minicog_clock",
+      "form_class": "Mini-Cog:Clock_Drawing",
+      "dataset": "test",
+      "shuffle_key": 2
+    }
+  },
+  {
+    "data": {
+      "image": "/data/local-files/?d=cognitive_assessment/scans/test/Mini-Cog_clock/syn_minicog_clock_05.JPG",
+      "filename": "syn_minicog_clock_05.JPG",
+      "doc_id": "syn_minicog_clock_05",
+      "page": 1,
+      "form": "minicog_clock",
+      "form_class": "Mini-Cog:Clock_Drawing",
+      "dataset": "test",
+      "shuffle_key": 3
+    }
+  },
+  {
+    "data": {
+      "image": "/data/local-files/?d=cognitive_assessment/scans/dev/Mini-Cog_clock/syn_minicog_clock_03.JPG",
+      "filename": "syn_minicog_clock_03.JPG",
+      "doc_id": "syn_minicog_clock_03",
+      "page": 1,
+      "form": "minicog_clock",
+      "form_class": "Mini-Cog:Clock_Drawing",
+      "dataset": "dev",
+      "shuffle_key": 4
+    }
+  }
+]

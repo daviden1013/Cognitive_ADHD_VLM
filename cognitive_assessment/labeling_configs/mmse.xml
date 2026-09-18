@@ -1,0 +1,94 @@
+<!-- MMSE (Mini-Mental State Exam)  (Stage-2 extraction)
+     Collects the score written in each of the 11 item boxes + total.
+     Extras recorded on the form: registration Trials count, level of consciousness.
+     Item scores = radio Choices; Total = numeric TextArea. -->
+<View>
+  <View style="display:flex;">
+
+    <!-- Left panel (stays in view): scanned page with zoom/pan/rotate -->
+    <View style="flex:55%; align-self:flex-start; position:sticky; top:0; padding-right:1em;">
+      <Image name="image" value="$image" zoom="true" zoomControl="true"
+             rotateControl="true" width="100%"/>
+    </View>
+
+    <!-- Right panel (scrolls independently): extraction fields -->
+    <View style="flex:45%; overflow-y:auto; max-height:90vh;">
+      <Header value="MMSE — score extraction"/>
+      <Text name="filename" value="File: $filename"/>
+      <Text name="doc_id" value="Doc ID: $doc_id"/>
+
+      <Header value="Orientation" size="4"/>
+      <Header value="Time — year/season/date/day/month  (0–5)" size="5"/>
+      <Choices name="orientation_time" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="4"/><Choice value="5"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="Place — state/country/town/hospital/floor  (0–5)" size="5"/>
+      <Choices name="orientation_place" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="4"/><Choice value="5"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Registration" size="4"/>
+      <Header value="Name 3 objects  (0–3)" size="5"/>
+      <Choices name="registration" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Attention and Calculation" size="4"/>
+      <Header value="Serial 7's / spell WORLD backward  (0–5)" size="5"/>
+      <Choices name="attention_calculation" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="4"/><Choice value="5"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Recall" size="4"/>
+      <Header value="Recall 3 objects  (0–3)" size="5"/>
+      <Choices name="recall" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Language" size="4"/>
+      <Header value="Name pencil and watch  (0–2)" size="5"/>
+      <Choices name="language_naming" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="Repeat 'No ifs, ands, or buts'  (0–1)" size="5"/>
+      <Choices name="language_repetition" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="3-stage command  (0–3)" size="5"/>
+      <Choices name="language_command" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/><Choice value="2"/><Choice value="3"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="Read and obey 'CLOSE YOUR EYES'  (0–1)" size="5"/>
+      <Choices name="language_read_obey" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="Write a sentence  (0–1)" size="5"/>
+      <Choices name="language_write" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+      <Header value="Copy the design  (0–1)" size="5"/>
+      <Choices name="language_copy" toName="image" choice="single" showInline="true" required="true">
+        <Choice value="0"/><Choice value="1"/>
+        <Choice value="blank"/><Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Total" size="4"/>
+      <Header value="Total Score  (0–30)" size="5"/>
+      <TextArea name="total_score" toName="image" rows="1" maxSubmissions="1" required="true"
+                placeholder="0–30  (type NA if blank/illegible)"/>
+    </View>
+  </View>
+</View>

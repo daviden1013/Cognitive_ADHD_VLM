@@ -1,0 +1,65 @@
+<!-- Mini-Cog: Instruction / Scoring page  (Stage-2 extraction)
+     Collects: itemized scores (Word Recall / Clock Draw / Total Score)
+
+     DEPRECATED: "written_score" is kept for backward compatibility with
+     already-collected annotations only. Any handwritten score on the page is
+     one of the 3 itemized scores above and should be recorded there instead.
+     Do not fill it in on new annotations. -->
+<View>
+  <View style="display:flex;">
+
+    <!-- Left panel (stays in view): scanned page with zoom/pan/rotate -->
+    <View style="flex:60%; align-self:flex-start; position:sticky; top:0; padding-right:1em;">
+      <Image name="image" value="$image" zoom="true" zoomControl="true"
+             rotateControl="true" width="100%"/>
+    </View>
+
+    <!-- Right panel (scrolls independently): extraction fields -->
+    <View style="flex:40%; overflow-y:auto; max-height:90vh;">
+      <Header value="Mini-Cog — Instruction / Scoring page"/>
+      <Text name="filename" value="File: $filename"/>
+      <Text name="doc_id" value="Doc ID: $doc_id"/>
+
+      <Header value="Itemized scores" size="4"/>
+
+      <Header value="Word Recall  (0–3 points)" size="5"/>
+      <Choices name="word_recall" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Clock Draw  (0 or 2 points)" size="5"/>
+      <Choices name="clock_draw" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="2"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="Total Score  (0–5 points)" size="5"/>
+      <Choices name="total_score" toName="image" choice="single"
+               showInline="true" required="true">
+        <Choice value="0"/>
+        <Choice value="1"/>
+        <Choice value="2"/>
+        <Choice value="3"/>
+        <Choice value="4"/>
+        <Choice value="5"/>
+        <Choice value="blank"/>
+        <Choice value="illegible"/>
+      </Choices>
+
+      <Header value="⚠ DEPRECATED — Written score (do not use)" size="4"/>
+      <Text name="ws_hint"
+            value="DEPRECATED: do NOT fill this in. Any handwritten score on the page is one of the 3 itemized scores above — record it there instead. This field is kept only so previously collected annotations remain readable."/>
+      <TextArea name="written_score" toName="image" rows="1"
+                maxSubmissions="1" placeholder="DEPRECATED — leave empty"/>
+    </View>
+  </View>
+</View>

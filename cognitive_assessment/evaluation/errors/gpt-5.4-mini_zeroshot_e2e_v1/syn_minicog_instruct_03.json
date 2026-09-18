@@ -1,0 +1,15 @@
+{
+  "filename": "syn_minicog_instruct_03.png",
+  "form": "Mini-Cog:Instruction",
+  "gold_class": "Mini-Cog:Instruction",
+  "pred_class": "Mini-Cog:Instruction",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "CLOCK DRAW",
+      "gold": "2",
+      "pred": "illegible"
+    }
+  ]
+}

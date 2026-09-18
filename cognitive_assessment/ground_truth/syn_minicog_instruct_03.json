@@ -1,0 +1,17 @@
+{
+  "class": "Mini-Cog:Instruction",
+  "scores": [
+    {
+      "question": "WORD RECALL",
+      "points": "3"
+    },
+    {
+      "question": "CLOCK DRAW",
+      "points": "2"
+    },
+    {
+      "question": "TOTAL SCORE",
+      "points": "5"
+    }
+  ]
+}

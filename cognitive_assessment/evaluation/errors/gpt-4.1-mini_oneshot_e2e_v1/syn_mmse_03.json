@@ -1,0 +1,15 @@
+{
+  "filename": "syn_mmse_03.png",
+  "form": "MMSE",
+  "gold_class": "MMSE",
+  "pred_class": "MMSE",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "ORIENTATION - TIME",
+      "gold": "1",
+      "pred": "4"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+---
+# End-to-end (e2e) routed run for the cognitive assessment PUBLIC DEMO:
+# classifier + all four score extractors in one pass.
+#
+# Non-reasoning arm: same test set, same prompts, same routing and output
+# record as the gpt-5.4-mini run, but a greedy BasicVLMConfig -- so the two
+# compare directly.
+#
+# v1 = the v1 extractor prompts (the latest); the classifier prompt has only a v0.
+#
+# Run from the project dir:  python pipelines/routed_pipeline.py -c configs/gpt-4.1-mini_zeroshot_e2e_v1.yaml
+# All relative paths below (prompts, I/O) resolve against the project dir: cognitive_assessment/
+
+run_name: "gpt-4.1-mini_zeroshot_e2e_v1"
+
+# --- VLM engine ---------------------------------------------------------------
+# Only Azure OpenAI is supported. Endpoint + API key are read from the environment
+# by the openai client -- do NOT put secrets here:
+#   AZURE_OPENAI_ENDPOINT   e.g. https://<resource>.openai.azure.com/
+#   AZURE_OPENAI_API_KEY    your key
+provider: "azure"
+vlm_engine:
+  model: "gpt-4.1-mini"                 # Azure *deployment* name
+  api_version: "2024-12-01-preview"
+  config: 'BasicVLMConfig(max_new_tokens=16384, temperature=0.0)'
+  # Optional engine-level throttling:
+  # max_concurrent_requests: 8
+  max_requests_per_minute: 64
+
+# --- Step 1: page classifier --------------------------------------------------
+# Returns {"form": "<MoCA | MMSE | Mini-Cog:Instruction | Mini-Cog:Clock_Drawing | other>"}.
+classifier:
+  user_prompt_path: "./prompt_templates/form_classification_v0.md"
+
+# --- Step 2: per-form score extractors ----------------------------------------
+# Keys MUST match the classifier's "form" values. Pages whose form is "other" (or
+# any label not listed here) are recorded with the classification only; no extraction.
+routes:
+  MoCA:
+    user_prompt_path: "./prompt_templates/moca_score_extraction_v1.md"
+  MMSE:
+    user_prompt_path: "./prompt_templates/mmse_score_extraction_v1.md"
+  "Mini-Cog:Instruction":
+    user_prompt_path: "./prompt_templates/mini_cog_instruction_score_extraction_v1.md"
+  "Mini-Cog:Clock_Drawing":
+    user_prompt_path: "./prompt_templates/mini_cog_clock_drawing_score_extraction_v1.md"
+
+# --- Pipeline / concurrency ---------------------------------------------------
+pipeline:
+  concurrent_batch_size: 8      # global cap on in-flight VLM calls (classify + extract)
+  max_file_load: 16             # max documents rasterized/open at once
+  rotate_correction: false      # false | "tesseract"
+  max_dimension_pixels: null    # e.g. 2048 to downscale before OCR
+
+# --- I/O (relative to the project dir: cognitive_assessment/) 
+# Outputs land in <output_directory>/<run_name>/<TYPE>/ and
+# <messages_log_directory>/<run_name>/<TYPE>/, where <TYPE> mirrors the scans/test/ subfolder.
+# The demo ships 4 test pages per form type (16 in all); scans/dev/ is held out.
+input_directory: "./scans/test/"
+output_directory: "./ocr/"
+messages_log_directory: "./messages_logs"

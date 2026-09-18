@@ -1,0 +1,25 @@
+{
+  "filename": "syn_moca_02.png",
+  "form": "MoCA",
+  "gold_class": "MoCA",
+  "pred_class": "MoCA",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "VISUOSPATIAL / EXECUTIVE",
+      "gold": "1",
+      "pred": "2"
+    },
+    {
+      "field": "NAMING",
+      "gold": "2",
+      "pred": "3"
+    },
+    {
+      "field": "ATTENTION - SERIAL 7",
+      "gold": "2",
+      "pred": "3"
+    }
+  ]
+}

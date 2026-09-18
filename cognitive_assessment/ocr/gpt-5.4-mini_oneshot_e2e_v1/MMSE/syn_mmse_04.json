@@ -1,0 +1,53 @@
+{
+  "class": "MMSE",
+  "scores": [
+    {
+      "question": "ORIENTATION - TIME",
+      "points": "5"
+    },
+    {
+      "question": "ORIENTATION - PLACE",
+      "points": "4"
+    },
+    {
+      "question": "REGISTRATION",
+      "points": "3"
+    },
+    {
+      "question": "ATTENTION AND CALCULATION",
+      "points": "4"
+    },
+    {
+      "question": "RECALL",
+      "points": "2"
+    },
+    {
+      "question": "LANGUAGE - NAMING",
+      "points": "1"
+    },
+    {
+      "question": "LANGUAGE - REPETITION",
+      "points": "1"
+    },
+    {
+      "question": "LANGUAGE - 3-STAGE COMMAND",
+      "points": "2"
+    },
+    {
+      "question": "LANGUAGE - READING",
+      "points": "1"
+    },
+    {
+      "question": "LANGUAGE - WRITING",
+      "points": "1"
+    },
+    {
+      "question": "LANGUAGE - COPYING",
+      "points": "blank"
+    },
+    {
+      "question": "TOTAL",
+      "points": "26"
+    }
+  ]
+}
