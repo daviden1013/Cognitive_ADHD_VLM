@@ -1,0 +1,101 @@
+Run:   gpt-4.1-mini_oneshot_e2e_v1
+Mode:  e2e
+Gold:  ./ground_truth
+Model: ./ocr/gpt-4.1-mini_oneshot_e2e_v1
+Scored 16 document(s).
+Gold documents with no model output (not scored): 4.
+Model outputs with no gold match (ignored): 4.
+
+Grid fields (medication_status / symptom / performance / side_effect) are scored
+by exact match and drive the per-doc field accuracy below.
+
+class_name and comments are handwriting transcriptions and are reported
+separately, in two parts: whether the model FOUND a transcription where there
+was one (a detection 2x2 -- positive = text is present), and, for the true
+positives only, how CLOSE the text is (normalized edit-distance similarity,
+1.000 = identical). They are excluded from the per-doc field accuracy.
+
+Vanderbilt:Scale_Parent        n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.853 (95% CI [0.721, 0.985])   std 0.083   median 0.866   Q1 0.804   Q3 0.915   (over 4 docs)
+  perfect docs (acc=1.0):   0.000 (0/4)
+  comments:
+      detection (is a transcription present?)   TP 0   FP 0   TN 4   FN 0   (n=4)
+        sensitivity -                specificity 1.000 (4/4)
+        PPV         -                NPV         1.000 (4/4)
+      similarity: (no document had a transcription on both sides)
+
+Vanderbilt:Scale_Teacher       n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.858 (95% CI [0.695, 1.021])   std 0.102   median 0.830   Q1 0.790   Q3 0.898   (over 4 docs)
+  perfect docs (acc=1.0):   0.250 (1/4)
+  class_name:
+      detection (is a transcription present?)   TP 3   FP 1   TN 0   FN 0   (n=4)
+        sensitivity 1.000 (3/3)      specificity 0.000 (0/1)
+        PPV         0.750 (3/4)      NPV         -
+      similarity (the 3 true positive(s)) mean 1.000   median 1.000   min 1.000   exact 1.000 (3/3)
+  comments:
+      detection (is a transcription present?)   TP 1   FP 0   TN 3   FN 0   (n=4)
+        sensitivity 1.000 (1/1)      specificity 1.000 (3/3)
+        PPV         1.000 (1/1)      NPV         1.000 (3/3)
+      similarity (the 1 true positive(s)) mean 0.991   median 0.991   min 0.991   exact 0.000 (0/1)
+
+Vanderbilt:Followup_Parent     n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.904 (95% CI [0.761, 1.047])   std 0.090   median 0.910   Q1 0.853   Q3 0.962   (over 4 docs)
+  perfect docs (acc=1.0):   0.250 (1/4)
+  comments:
+      detection (is a transcription present?)   TP 0   FP 1   TN 3   FN 0   (n=4)
+        sensitivity -                specificity 0.750 (3/4)
+        PPV         0.000 (0/1)      NPV         1.000 (3/3)
+      similarity: (no document had a transcription on both sides)
+
+Vanderbilt:Followup_Teacher    n=4
+  class accuracy:           1.000 (4/4)   95% CI [0.510, 1.000]
+  per-doc field accuracy:   mean 0.885 (95% CI [0.814, 0.955])   std 0.044   median 0.872   Q1 0.865   Q3 0.891   (over 4 docs)
+  perfect docs (acc=1.0):   0.000 (0/4)
+  class_name:
+      detection (is a transcription present?)   TP 3   FP 0   TN 1   FN 0   (n=4)
+        sensitivity 1.000 (3/3)      specificity 1.000 (1/1)
+        PPV         1.000 (3/3)      NPV         1.000 (1/1)
+      similarity (the 3 true positive(s)) mean 1.000   median 1.000   min 1.000   exact 1.000 (3/3)
+  comments:
+      detection (is a transcription present?)   TP 0   FP 0   TN 4   FN 0   (n=4)
+        sensitivity -                specificity 1.000 (4/4)
+        PPV         -                NPV         1.000 (4/4)
+      similarity: (no document had a transcription on both sides)
+
+============================================================
+OVERALL                        n=16
+  class accuracy:           1.000 (16/16)   95% CI [0.806, 1.000]
+  per-doc field accuracy:   mean 0.875 (95% CI [0.834, 0.916])   std 0.077   median 0.872   Q1 0.815   Q3 0.934   (over 16 docs)
+  perfect docs (acc=1.0):   0.125 (2/16)
+  class_name:
+      detection (is a transcription present?)   TP 6   FP 1   TN 1   FN 0   (n=8)
+        sensitivity 1.000 (6/6)      specificity 0.500 (1/2)
+        PPV         0.857 (6/7)      NPV         1.000 (1/1)
+      similarity (the 6 true positive(s)) mean 1.000   median 1.000   min 1.000   exact 1.000 (6/6)
+  comments:
+      detection (is a transcription present?)   TP 1   FP 1   TN 14   FN 0   (n=16)
+        sensitivity 1.000 (1/1)      specificity 0.933 (14/15)
+        PPV         0.500 (1/2)      NPV         1.000 (14/14)
+      similarity (the 1 true positive(s)) mean 0.991   median 0.991   min 0.991   exact 0.000 (0/1)
+
+============================================================
+Classification report (per class):
+  class                          precision   recall      F1  support
+  Vanderbilt:Scale_Parent            1.000    1.000   1.000        4
+  Vanderbilt:Scale_Teacher           1.000    1.000   1.000        4
+  Vanderbilt:Followup_Parent         1.000    1.000   1.000        4
+  Vanderbilt:Followup_Teacher        1.000    1.000   1.000        4
+  macro avg                          1.000    1.000   1.000       16
+  accuracy                                            1.000       16
+
+Confusion matrix (rows = gold, cols = predicted):
+                                 S-Par    S-Tch    F-Par    F-Tch
+Vanderbilt:Scale_Parent              4        0        0        0
+Vanderbilt:Scale_Teacher             0        4        0        0
+Vanderbilt:Followup_Parent           0        0        4        0
+Vanderbilt:Followup_Teacher          0        0        0        4
+  cols: S-Par=Vanderbilt:Scale_Parent, S-Tch=Vanderbilt:Scale_Teacher, F-Par=Vanderbilt:Followup_Parent, F-Tch=Vanderbilt:Followup_Teacher
+

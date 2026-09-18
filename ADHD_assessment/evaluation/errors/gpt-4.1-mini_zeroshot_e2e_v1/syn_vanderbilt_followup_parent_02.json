@@ -1,0 +1,24 @@
+{
+  "filename": "syn_vanderbilt_followup_parent_02.png",
+  "form": "Vanderbilt:Followup_Parent",
+  "gold_class": "Vanderbilt:Followup_Parent",
+  "pred_class": "Vanderbilt:Followup_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "performance_24",
+      "gold": "4",
+      "pred": "2"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "tasks and activities\nstimuli\n\"driven by a motor\"",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

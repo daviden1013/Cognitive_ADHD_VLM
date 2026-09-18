@@ -1,0 +1,44 @@
+{
+  "filename": "syn_vanderbilt_parent_05.png",
+  "form": "Vanderbilt:Scale_Parent",
+  "gold_class": "Vanderbilt:Scale_Parent",
+  "pred_class": "Vanderbilt:Scale_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_16",
+      "gold": "1",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_26",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_28",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_30",
+      "gold": "1",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_32",
+      "gold": "0",
+      "pred": "2"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Theo Williams\nDawn Williams\n855 318 4417",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

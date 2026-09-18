@@ -1,0 +1,39 @@
+{
+  "filename": "syn_vanderbilt_followup_teacher_01.png",
+  "form": "Vanderbilt:Followup_Teacher",
+  "gold_class": "Vanderbilt:Followup_Teacher",
+  "pred_class": "Vanderbilt:Followup_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_15",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "performance_20",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "performance_21",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "performance_26",
+      "gold": "3",
+      "pred": "2"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Tom Gallagher\nYuki Tomooka\n4W",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

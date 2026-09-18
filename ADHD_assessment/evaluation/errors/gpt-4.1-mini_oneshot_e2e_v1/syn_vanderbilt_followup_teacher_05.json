@@ -1,0 +1,36 @@
+{
+  "filename": "syn_vanderbilt_followup_teacher_05.png",
+  "form": "Vanderbilt:Followup_Teacher",
+  "gold_class": "Vanderbilt:Followup_Teacher",
+  "pred_class": "Vanderbilt:Followup_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "side_effect_4",
+      "gold": "None",
+      "pred": "Mild"
+    },
+    {
+      "field": "side_effect_5",
+      "gold": "Mild",
+      "pred": "Blank"
+    },
+    {
+      "field": "side_effect_9",
+      "gold": "Moderate",
+      "pred": "Blank"
+    },
+    {
+      "field": "side_effect_11",
+      "gold": "None",
+      "pred": "Blank"
+    },
+    {
+      "field": "side_effect_12",
+      "gold": "Mild",
+      "pred": "Blank"
+    }
+  ],
+  "text_fields": []
+}

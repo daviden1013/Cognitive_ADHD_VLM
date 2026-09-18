@@ -1,0 +1,18 @@
+{
+  "filename": "syn_vanderbilt_followup_parent_02.png",
+  "form": "Vanderbilt:Followup_Parent",
+  "gold_class": "Vanderbilt:Followup_Parent",
+  "pred_class": "Vanderbilt:Followup_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "tasks and activities\nstimuli\n\"on the go\" or often acts as if \"driven by a motor\"",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

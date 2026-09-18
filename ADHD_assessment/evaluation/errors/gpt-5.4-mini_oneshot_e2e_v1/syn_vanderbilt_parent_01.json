@@ -1,0 +1,16 @@
+{
+  "filename": "syn_vanderbilt_parent_01.png",
+  "form": "Vanderbilt:Scale_Parent",
+  "gold_class": "Vanderbilt:Scale_Parent",
+  "pred_class": "Vanderbilt:Scale_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_46",
+      "gold": "0",
+      "pred": "1"
+    }
+  ],
+  "text_fields": []
+}

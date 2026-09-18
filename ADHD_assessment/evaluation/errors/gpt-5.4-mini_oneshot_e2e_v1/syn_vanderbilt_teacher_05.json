@@ -1,0 +1,18 @@
+{
+  "filename": "syn_vanderbilt_teacher_05.png",
+  "form": "Vanderbilt:Scale_Teacher",
+  "gold_class": "Vanderbilt:Scale_Teacher",
+  "pred_class": "Vanderbilt:Scale_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": "The student's academic performance is hard to measure due to not being able to complete assignments on paper.",
+      "pred": "The student's academic Performance is hard to measure due to not being able to complete assigned work on paper.",
+      "score": 0.9369369369369369,
+      "category": "text_pair"
+    }
+  ]
+}

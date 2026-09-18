@@ -1,0 +1,84 @@
+{
+  "filename": "syn_vanderbilt_teacher_03.png",
+  "form": "Vanderbilt:Scale_Teacher",
+  "gold_class": "Vanderbilt:Scale_Teacher",
+  "pred_class": "Vanderbilt:Scale_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_8",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_9",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_10",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_17",
+      "gold": "1",
+      "pred": "Blank"
+    },
+    {
+      "field": "symptom_19",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_20",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_25",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_26",
+      "gold": "0",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_27",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_28",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_29",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_30",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_31",
+      "gold": "0",
+      "pred": "2"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Priya Roman\n4/1/2022\nAmara Okafor\n3rd\n11:00\n3W",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "filename": "syn_vanderbilt_parent_01.png",
+  "form": "Vanderbilt:Scale_Parent",
+  "gold_class": "Vanderbilt:Scale_Parent",
+  "pred_class": "Vanderbilt:Scale_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_41",
+      "gold": "2",
+      "pred": "0"
+    },
+    {
+      "field": "symptom_42",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_43",
+      "gold": "2",
+      "pred": "0"
+    },
+    {
+      "field": "symptom_45",
+      "gold": "1",
+      "pred": "Blank"
+    },
+    {
+      "field": "symptom_46",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_47",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "performance_53",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "performance_54",
+      "gold": "4",
+      "pred": "2"
+    },
+    {
+      "field": "performance_55",
+      "gold": "3",
+      "pred": "2"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Moteo Garcia\nElena Garcia\n555 601 3374\n9/5/2012\n3/6/2012",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

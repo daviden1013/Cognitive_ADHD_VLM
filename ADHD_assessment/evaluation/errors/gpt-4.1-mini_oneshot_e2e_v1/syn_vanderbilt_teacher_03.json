@@ -1,0 +1,41 @@
+{
+  "filename": "syn_vanderbilt_teacher_03.png",
+  "form": "Vanderbilt:Scale_Teacher",
+  "gold_class": "Vanderbilt:Scale_Teacher",
+  "pred_class": "Vanderbilt:Scale_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_9",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_15",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_17",
+      "gold": "1",
+      "pred": "Blank"
+    },
+    {
+      "field": "symptom_27",
+      "gold": "0",
+      "pred": "Blank"
+    },
+    {
+      "field": "symptom_28",
+      "gold": "0",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_30",
+      "gold": "0",
+      "pred": "1"
+    }
+  ],
+  "text_fields": []
+}

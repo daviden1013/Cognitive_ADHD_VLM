@@ -1,0 +1,99 @@
+{
+  "filename": "syn_vanderbilt_teacher_01.png",
+  "form": "Vanderbilt:Scale_Teacher",
+  "gold_class": "Vanderbilt:Scale_Teacher",
+  "pred_class": "Vanderbilt:Scale_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_2",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_3",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_4",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_9",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_10",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_11",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_18",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_19",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_20",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_21",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_22",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_23",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_24",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_25",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_26",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_27",
+      "gold": "2",
+      "pred": "1"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Teacher's Name: Daniel Oser\nChild's Name: Theo Williams\nToday's Date: 3/16/2022\nClass Time: 10:00\nGrade Level: 2nd",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

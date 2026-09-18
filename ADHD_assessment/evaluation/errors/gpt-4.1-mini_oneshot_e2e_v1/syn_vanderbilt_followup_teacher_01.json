@@ -1,0 +1,21 @@
+{
+  "filename": "syn_vanderbilt_followup_teacher_01.png",
+  "form": "Vanderbilt:Followup_Teacher",
+  "gold_class": "Vanderbilt:Followup_Teacher",
+  "pred_class": "Vanderbilt:Followup_Teacher",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "performance_20",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "performance_21",
+      "gold": "3",
+      "pred": "2"
+    }
+  ],
+  "text_fields": []
+}

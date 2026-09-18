@@ -1,0 +1,89 @@
+{
+  "filename": "syn_vanderbilt_parent_04.png",
+  "form": "Vanderbilt:Scale_Parent",
+  "gold_class": "Vanderbilt:Scale_Parent",
+  "pred_class": "Vanderbilt:Scale_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_6",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_14",
+      "gold": "3",
+      "pred": "2"
+    },
+    {
+      "field": "symptom_20",
+      "gold": "1",
+      "pred": "0"
+    },
+    {
+      "field": "symptom_22",
+      "gold": "Blank",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_23",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_24",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_25",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_26",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_27",
+      "gold": "3",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_28",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_29",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_30",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_31",
+      "gold": "2",
+      "pred": "1"
+    },
+    {
+      "field": "symptom_32",
+      "gold": "2",
+      "pred": "1"
+    }
+  ],
+  "text_fields": [
+    {
+      "field": "comments",
+      "gold": null,
+      "pred": "Child's Name: Grace Nakamura\nParent's Name: Eric Nakamura\nParent's Phone Number: 555-224-8891",
+      "score": 0.0,
+      "category": "spurious"
+    }
+  ]
+}

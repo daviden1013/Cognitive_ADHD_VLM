@@ -1,0 +1,21 @@
+{
+  "filename": "syn_vanderbilt_followup_parent_03.png",
+  "form": "Vanderbilt:Followup_Parent",
+  "gold_class": "Vanderbilt:Followup_Parent",
+  "pred_class": "Vanderbilt:Followup_Parent",
+  "class_correct": true,
+  "pred_malformed": false,
+  "mismatches": [
+    {
+      "field": "symptom_5",
+      "gold": "1",
+      "pred": "Blank"
+    },
+    {
+      "field": "performance_25",
+      "gold": "3",
+      "pred": "5"
+    }
+  ],
+  "text_fields": []
+}
