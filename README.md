@@ -240,10 +240,14 @@ Scoring is exact string match, field by field; `null` matches only `null`.
 
 ## 5. Citation
 
-<!-- TODO: add the citation once the paper is available. -->
-
 ```bibtex
-
+@misc{hsu2026visualinformationextractionusing,
+      title={A Visual Information Extraction System Using Multimodal Large Language Models for Scanned Cognitive and Behavioral Assessments}, 
+      author={Enshuo Hsu and Linh Nguyen and Sunyang Fu and Heath Goodrum and Sandra Stansberry and Kirk Roberts and Hongfang Liu and Yen-Chi L. Le},
+      year={2026},
+      eprint={2611.22252},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2611.22252}, 
+}
 ```
-
-<!-- TODO: acknowledgements / funding (AIM AHEAD), license. -->
